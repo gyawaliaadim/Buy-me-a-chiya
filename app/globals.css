@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+
+h1{
+    @apply m-2 text-7xl font-extrabold  text-center max-[780px]:text-6xl max-[650px]:text-5xl max-[530px]:text-4xl max-[400px]:text-3xl;
+}
+
+p{
+    @apply m-2 text-2xl text-center max-[670px]:text-[1rem] max-[370px]:hidden
+}
+
+h2{
+    @apply text-5xl font-bold  text-center max-[780px]:text-3xl max-[650px]:text-2xl;
+}
+h3{
+    @apply  text-[15px]
+}
