@@ -4,8 +4,14 @@
 # Buy-me-a-chiya
 Buy me a coffee clone with E-Sewa payment gateway.
 
-To use it, clone the git and run: 
+To use it, 
+i) clone the git <br>
+ii) Install MongoDB
+iii) and run: 
 ```
+npm i
+*Installs dependencies*
+
 npm run dev
 ```
 Goto the given port and use the website, you can login through github and many more things!
