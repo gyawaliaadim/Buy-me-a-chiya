@@ -10,13 +10,10 @@
 //   )
 // }
 import { SessionProvider } from "next-auth/react"
-export default function SessionWrapper({
-  Component,
-  pageProps: { session, ...pageProps },
-}) {
+export default function SessionWrapper({ children }) {
   return (
-    <SessionProvider session={session} basePath="/api/auth">
-      <Component {...pageProps} />
+    <SessionProvider  basePath="/api/auth">
+      {children}
     </SessionProvider>
   )
 }
