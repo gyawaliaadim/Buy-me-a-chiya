@@ -4,18 +4,60 @@
 # Buy-me-a-chiya
 Buy me a coffee clone with E-Sewa payment gateway.
 
-To use it, <br>
+To use it, make sure you have node js installed in your computer. Then: <br>
 i) clone the git <br>
 ii) Install MongoDB<br>
-iii) and run: <br>
+iii) and run this command: <br>
 ```
 npm i
 *Installs dependencies*
-
-npm run dev
 ```
-Goto the given port and use the website, you can login through github and many more things!
+Now make a .env.local file in the root directory (inside buy-me-a-chiya-main folder), then inside of .env.local, insert these things: <br>
+```
+NEXT_PUBLIC_HOST=http://localhost:PORT
+NEXT_PUBLIC_API_URL=http://localhost:PORT/api 
+GITHUB_ID=*Your Github ID*
+GITHUB_SECRET=*Your Github Secret*
+MONGO_URI=mongodb://localhost:PORT
+```
+In of NEXT_PUBLIC_HOST & NEXT_PUBLIC_API, instead of PORT put the the port you get after you run
+```
+$ npm run dev
 
+> buy-me-a-coffee-clone@0.1.0 dev
+> next dev --turbopack
+
+   ▲ Next.js 15.3.1 (Turbopack)
+   - Local:        http://localhost:3000 <- this 3000 is your PORT
+   - Network:      http://192.168.1.73:3000
+   - Environments: .env.local
+
+```
+Which would probably be 3000,
+
+After you install MongoDB and MongoDb compass, Connect it and put the port in MONGO_URI=mongodb://localhost:*The port, which would probably be 27017*
+Now go to https://github.com/settings/developers<br>
+And create a new OAuth app, then inside the Homepage URL put: http://localhost:PORT, and inside Authorization callback URL put: http://localhost:PORT/api/auth/callback/github and save it.<br>
+Then you will get Client ID, then generate a Client Secret. Then: <br>
+In
+```
+GITHUB_ID:*The Client ID you got*
+GITHUB_SECRET:*The Client Secret you got*
+```
+
+Now if you are already running the server, turn it off by clicking Ctrl+C or just deleting the terminal from VS Code. Then run this commands and click in the place given below:
+```
+npm run dev
+
+> buy-me-a-coffee-clone@0.1.0 dev
+> next dev --turbopack
+
+   ▲ Next.js 15.3.1 (Turbopack)
+   - Local:        http://localhost:3000 <-click here
+   - Network:      http://192.168.1.73:3000
+   - Environments: .env.local
+```
+Finally, you can use the app with no problems.
 
 <br>
 <h1>Images</h1> 
