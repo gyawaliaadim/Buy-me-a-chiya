@@ -39,7 +39,7 @@ After you install MongoDB and MongoDb compass, Connect it and put the port in <b
 MONGO_URI=mongodb://localhost:*The port, which would probably be 27017*<br>
 <br>
 Now go to https://github.com/settings/developers<br>
-And create a new OAuth app, then inside the Homepage URL put: http://localhost:PORT, and inside Authorization callback URL put: http://localhost:PORT/api/auth/callback/github and save it. Again, PORT is the port that you get after running npm run dev<br>
+And create a new OAuth app, then <br>inside the Homepage URL put: http://localhost:PORT, and <br>inside Authorization callback URL put: http://localhost:PORT/api/auth/callback/github <br>and save it. Again, PORT is the port that you get after running npm run dev<br>
 Then you will get Client ID, then generate a Client Secret. Then: <br>
 In
 ```
