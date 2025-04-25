@@ -20,7 +20,7 @@ GITHUB_ID=*Your Github ID*
 GITHUB_SECRET=*Your Github Secret*
 MONGO_URI=mongodb://localhost:PORT
 ```
-In of NEXT_PUBLIC_HOST & NEXT_PUBLIC_API, instead of PORT put the the port you get after you run
+In NEXT_PUBLIC_HOST & NEXT_PUBLIC_API, instead of PORT put the the port you get after you run, see the arrow below
 ```
 $ npm run dev
 
@@ -35,9 +35,11 @@ $ npm run dev
 ```
 Which would probably be 3000,
 
-After you install MongoDB and MongoDb compass, Connect it and put the port in MONGO_URI=mongodb://localhost:*The port, which would probably be 27017*
+After you install MongoDB and MongoDb compass, Connect it and put the port in <br>
+MONGO_URI=mongodb://localhost:*The port, which would probably be 27017*<br>
+<br>
 Now go to https://github.com/settings/developers<br>
-And create a new OAuth app, then inside the Homepage URL put: http://localhost:PORT, and inside Authorization callback URL put: http://localhost:PORT/api/auth/callback/github and save it.<br>
+And create a new OAuth app, then inside the Homepage URL put: http://localhost:PORT, and inside Authorization callback URL put: http://localhost:PORT/api/auth/callback/github and save it. Again, PORT is the port that you get after running npm run dev<br>
 Then you will get Client ID, then generate a Client Secret. Then: <br>
 In
 ```
