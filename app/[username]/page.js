@@ -138,11 +138,11 @@ const Username = ({ params }) => {
     !validUsername ? (
       <div className='w-full h-full flex justify-center items-center'>404 error</div>
     ) : (
-      <div className='flex flex-col justify-start items-center min-h-[200vh] mx-auto relative'>
+      <div className='flex flex-col justify-start items-center min-h-[200vh]  relative bg-gray-200'>
         <div className="absolute top-0 cover w-full h-[20vh] flex justify-center items-center z-0">
           <img className="object-cover bg-center" src={User.coverpic} />
         </div>
-        <div className="top-[300px] info absolute z-10 w-[85%] flex justify-center gap-5 flex-wrap ">
+        <div className="top-[300px] info absolute z-10 flex justify-center gap-5 flex-wrap ">
 
           <div className="userInfo w-[600px] h-max flex flex-col justify-start items-center gap-5 p-5 bg-white rounded-2xl shadow-lg">
             <div className="userDetails items-center flex justify-start gap-5 self-start">

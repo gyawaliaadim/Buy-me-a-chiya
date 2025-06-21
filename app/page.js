@@ -3,10 +3,9 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-
 export default function Home() {
   return (
-
+    
     <>
       <div className="bg-[url('/background.svg')] bg-repeat bg-contain w-full fill-white flex justify-center items-center flex-col gap-3">
         <div className="w-[75%] h-full flex flex-col justify-center gap-10 items-center min-h-screen">
