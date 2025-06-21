@@ -32,6 +32,7 @@ const Demo = () => {
 
 
 const onSubmit = async (data) => {
+    const baseUrl = typeof window !== "undefined" ? window.location.origin : "";
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     
@@ -49,8 +50,8 @@ const onSubmit = async (data) => {
         body: JSON.stringify(ndata),
         redirect: "follow"
     };
-                
-    const r = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/addPayment`, requestOptions);
+    
+    const r = await fetch(`${baseUrl}/api/addPayment`, requestOptions);
     const result = await r.json()
 
     const GetRequestOptions = {
@@ -59,7 +60,8 @@ const onSubmit = async (data) => {
         redirect: "follow"
     };
                 
-    const getRes = Router.push(`${process.env.NEXT_PUBLIC_HOST}/paymentGateway?amount=${encodeURIComponent(ndata.amount)}&uuid=${ndata.transaction_uuid}`, GetRequestOptions)
+    
+    Router.push(`${baseUrl}/paymentGateway?amount=${encodeURIComponent(ndata.amount)}&uuid=${ndata.transaction_uuid}`);
 };
 
 const handleQuickSelect = (val) => {

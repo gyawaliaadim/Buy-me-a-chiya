@@ -10,7 +10,8 @@ const App = () => {
 
   const amount = searchParams.get("amount");
   const transaction_uuid = searchParams.get("uuid"); // Generate a unique transaction UUID
-  console.log(amount,transaction_uuid)
+  const currentUrl = typeof window !== "undefined" ? window.location.origin : "";
+ 
   const [formData, setformData] = useState({
     amount: `${amount}`,
     tax_amount: "0",
@@ -19,8 +20,8 @@ const App = () => {
     product_service_charge: "0",
     product_delivery_charge: "0",
     product_code: "EPAYTEST",
-    success_url: `${process.env.NEXT_PUBLIC_API_URL}/addPayment`,
-    failure_url: `${process.env.NEXT_PUBLIC_API_URL}/addPayment`,
+    success_url: `${currentUrl}/api/addPayment`,
+    failure_url: `${currentUrl}/api/addPayment`,
     signed_field_names: "total_amount,transaction_uuid,product_code",
     signature: "",
     secret: "8gBm/:&EnhH.1/q",

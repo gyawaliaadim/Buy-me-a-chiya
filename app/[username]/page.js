@@ -28,9 +28,9 @@ const Username = ({ params }) => {
 
   const [customAmount, setCustomAmount] = useState('');
   const [selected, setSelected] = useState(null); // to highlight the selected button
-
   useEffect(() => {
     const fetchData = async () => {
+
       try {
         const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
@@ -41,8 +41,10 @@ const Username = ({ params }) => {
           redirect: "follow",
         };
 
+      const currentUrl = typeof window !== "undefined" ? window.location.origin : '';
+      console.log("Current URL:", currentUrl);
         const r = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/fetchUser?username=${encodeURIComponent(Username)}&email=null`,
+          `${currentUrl}/api/fetchUser?username=${encodeURIComponent(Username)}&email=null`,
           requestOptions
         );
         const userInfo = await r.json();
@@ -73,11 +75,12 @@ const Username = ({ params }) => {
           redirect: "follow"
         };
 
-        const r = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/fetchPayments?user=${encodeURIComponent(Username)}`, requestOptions);
+        const currentUrl = typeof window !== "undefined" ? window.location.origin: "";
+        const r = await fetch(`${currentUrl}/api/fetchPayments?user=${encodeURIComponent(Username)}`, requestOptions);
         const p = await r.json();
         setPayments(p.payments)
         // console.log(typeo)
-        console.log( p.payments)
+        console.log(p.payments)
       }
       catch (error) {
         console.error("Error fetching user data:", error);
@@ -117,8 +120,8 @@ const Username = ({ params }) => {
       body: JSON.stringify(ndata),
       redirect: "follow"
     };
-
-    const r = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/addPayment`, requestOptions);
+    const currentUrl = typeof window !== "undefined" ? window.location.origin  : "";
+    const r = await fetch(`${currentUrl}/api/addPayment`, requestOptions);
     const result = await r.json()
 
     const GetRequestOptions = {
@@ -127,7 +130,7 @@ const Username = ({ params }) => {
       redirect: "follow"
     };
 
-    const getRes = Router.push(`${process.env.NEXT_PUBLIC_HOST}/paymentGateway?amount=${encodeURIComponent(ndata.amount)}&uuid=${ndata.transaction_uuid}`, GetRequestOptions)
+    const getRes = Router.push(`${currentUrl}/paymentGateway?amount=${encodeURIComponent(ndata.amount)}&uuid=${ndata.transaction_uuid}`, GetRequestOptions)
   };
 
 
@@ -159,23 +162,23 @@ const Username = ({ params }) => {
 
               <h4 className='text-[1.2rem] font-bold text-gray-600'>My Supporters</h4>
               <div className="supporterList flex flex-col overflow-y-auto h-[400px] w-full gap-2">
-              {Payments.map((payment, index) => (
-                <div key={index} className="supporter flex justify-start items-start gap-2 w-full p-2">
-                  <div className="profilePicture rounded-[50%] w-10 h-10">
-                    <Image
-                      className='w-auto h-10 rounded-[50%] object-cover bg-center outline-2 outline-blue-400'
-                      src="/user.svg"
-                      alt="User profile"
-                      width={40}
-                      height={40}
-                    />
+                {Payments.map((payment, index) => (
+                  <div key={index} className="supporter flex justify-start items-start gap-2 w-full p-2">
+                    <div className="profilePicture rounded-[50%] w-10 h-10">
+                      <Image
+                        className='w-auto h-10 rounded-[50%] object-cover bg-center outline-2 outline-blue-400'
+                        src="/user.svg"
+                        alt="User profile"
+                        width={40}
+                        height={40}
+                      />
+                    </div>
+                    <div className="supporterDetails w-full h-full">
+                      <div className="supporterInfo"><span className='font-bold'>{payment.name}</span> bought {payment.amount / 50} chiya.</div>
+                      <div className="message bg-gray-100 rounded-md shadow-md p-3" >{payment.message}</div>
+                    </div>
                   </div>
-                  <div className="supporterDetails w-full h-full">
-                    <div className="supporterInfo"><span className='font-bold'>{payment.name}</span> bought {payment.amount / 50} chiya.</div>
-                    <div className="message bg-gray-100 rounded-md shadow-md p-3" >{payment.message}</div>
-                  </div>
-                </div>
-              ))}
+                ))}
 
               </div>
             </div>

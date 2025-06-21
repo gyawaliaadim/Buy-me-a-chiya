@@ -33,9 +33,8 @@ const Navbar = () => {
                         headers: myHeaders,
                         redirect: "follow"
                     };
-                    const r = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/fetchUser?username=null&email=${encodeURIComponent(session.user.email)}`, requestOptions);
+                    const r = await fetch(`/api/fetchUser?username=null&email=${encodeURIComponent(session.user.email)}`, requestOptions);
                     const userInfo = await r.json();
-                    console.log(userInfo.user)
                     // setGetUserInfo(userInfo.user);
                     if (userInfo.user) {
                         setName(userInfo.user.name);

@@ -7,7 +7,6 @@ export async function GET(req) {
     const { searchParams } = new URL(req.url);
     const email = searchParams.get('email');
     const username = searchParams.get('username');
-    console.log(email, username)
     await connectDb();
     if (username == "null") {
         // console.log(email)

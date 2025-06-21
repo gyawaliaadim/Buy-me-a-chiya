@@ -7,7 +7,7 @@ const Footer = () => {
         <footer className="bg-white text-black">
             <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
                 <div className="sm:flex sm:items-center sm:justify-between">
-                    <span className="text-sm text-black sm:text-center">© 2023 <Link href="#" className="hover:underline">Buy me a chiya</Link>. All Rights Reserved.
+                    <span className="text-sm text-black sm:text-center">© 2025 <Link href="#" className="hover:underline">Buy me a chiya</Link>. All Rights Reserved.
                     </span>
                     <div className="flex mt-4 sm:justify-center sm:mt-0">
                         <Link target="_blank" href="https://github.com/gyawaliaadim" className="text-black hover:text-gray-900 ms-5 hover:scale-110 transition-transform duration-200">

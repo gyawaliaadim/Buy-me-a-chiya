@@ -36,7 +36,8 @@ const Dashboard = () => {
                         redirect: "follow"
                     };
             
-                    const r = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/fetchUser?username=null&email=${encodeURIComponent(session.user.email)}`, requestOptions);
+                    const currentUrl = typeof window !== "undefined" ? window.location.origin : '';
+                    const r = await fetch(`${currentUrl}/api/fetchUser?username=null&email=${encodeURIComponent(session.user.email)}`, requestOptions);
                     const userInfo = await r.json();
                     // console.log(userInfo)
                     setGetUserInfo(userInfo.user);
@@ -79,7 +80,8 @@ const Dashboard = () => {
                     redirect: "follow"
                 };
         
-                const r = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/fetchUser?username=${encodeURIComponent(data.username)}&email=null`, requestOptions);
+                const currentUrl = typeof window !== "undefined" ? window.location.origin : '';
+                const r = await fetch(`${currentUrl}/api/fetchUser?username=${encodeURIComponent(data.username)}&email=null`, requestOptions);
                 const userInfo = await r.json();
                 if (userInfo.user) {
                     setError("username", {
@@ -95,7 +97,6 @@ const Dashboard = () => {
                 console.log(error)
             }
         }
-        console.log(data)
         try {
             new URL(data.profilepic);
         } catch {
@@ -119,7 +120,6 @@ const Dashboard = () => {
         
         const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
-        console.log(data)
         const requestOptions = {
             method: "POST",
             headers: myHeaders,
@@ -127,7 +127,8 @@ const Dashboard = () => {
             redirect: "follow"
         };
                     
-        const r = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/updateProfile`, requestOptions);
+        const currentUrl = typeof window !== "undefined" ? window.location.origin : '';
+        const r = await fetch(`${currentUrl}/api/updateProfile`, requestOptions);
         const result = await r.json()
 
  
